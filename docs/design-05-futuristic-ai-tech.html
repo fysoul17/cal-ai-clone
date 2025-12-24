@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal AI - Design Style 5: Futuristic AI Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00F5D4;
+            --primary-dark: #00C4AA;
+            --secondary: #FF006E;
+            --accent: #8338EC;
+            --bg: #0D0D0D;
+            --bg-elevated: #1A1A1A;
+            --surface: #242424;
+            --text: #FFFFFF;
+            --text-secondary: #888888;
+            --border: #333333;
+            --glow: rgba(0, 245, 212, 0.5);
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 245, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 245, 212, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 245, 212, 0.15);
+            top: 10%;
+            left: 10%;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(131, 56, 236, 0.15);
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 0, 110, 0.1);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-box {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-box span {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.875rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--bg);
+            border: none;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px var(--glow);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        /* AI Dashboard Card */
+        .ai-card {
+            width: 400px;
+            background: rgba(36, 36, 36, 0.8);
+            backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transform: rotateY(-5deg) rotateX(5deg);
+        }
+
+        .ai-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 20px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--primary), transparent, var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .ai-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--primary);
+        }
+
+        .ai-status .indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--glow);
+        }
+
+        .ai-card-title {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .data-viz {
+            margin-bottom: 2rem;
+        }
+
+        .data-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+        }
+
+        .data-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .data-unit {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .data-change {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--primary);
+        }
+
+        .progress-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .progress-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-label {
+            width: 70px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 8px;
+            background: var(--bg);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-fill.protein {
+            width: 78%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .progress-fill.carbs {
+            width: 65%;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+
+        .progress-fill.fat {
+            width: 52%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
+
+        .progress-value {
+            width: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            text-align: right;
+        }
+
+        .ai-scan-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(0, 245, 212, 0.2), rgba(131, 56, 236, 0.2));
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            border-radius: 12px;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .ai-scan-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 245, 212, 0.3), rgba(131, 56, 236, 0.3));
+            box-shadow: 0 0 30px rgba(0, 245, 212, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(36, 36, 36, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 245, 212, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 245, 212, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(0, 245, 212, 0.2), rgba(131, 56, 236, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        /* Terminal Section */
+        .terminal-section {
+            padding: 8rem 2rem;
+            background: var(--bg-elevated);
+            position: relative;
+            z-index: 1;
+        }
+
+        .terminal-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .terminal {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: var(--surface);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #FF5F56; }
+        .terminal-dot.yellow { background: #FFBD2E; }
+        .terminal-dot.green { background: #27CA3E; }
+
+        .terminal-body {
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 2;
+        }
+
+        .terminal-line {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .terminal-prompt {
+            color: var(--primary);
+        }
+
+        .terminal-command {
+            color: var(--text);
+        }
+
+        .terminal-output {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+        }
+
+        .terminal-json {
+            color: var(--accent);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Style Info Box */
+        .style-info {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(36, 36, 36, 0.95);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 320px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .style-info h4 {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .style-info ul {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 1.25rem;
+        }
+
+        .style-info ul li {
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="glow-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Style Info -->
+    <div class="style-info">
+        <h4>Style 5: Futuristic AI Tech</h4>
+        <ul>
+            <li><strong>Tone:</strong> 혁신적, 첨단, 스마트</li>
+            <li><strong>Color:</strong> 다크 베이스 + 네온 시안/마젠타</li>
+            <li><strong>Feel:</strong> 사이버펑크, 데이터 비주얼, 글로우</li>
+            <li><strong>Target:</strong> 테크 얼리어답터, 개발자</li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-box"><span>C</span></div>
+                <span class="logo-text">CAL.AI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">Docs</a></li>
+            </ul>
+            <div>
+                <a href="#" class="btn btn-ghost">Sign In</a>
+                <a href="#" class="btn btn-primary">Get Access</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                <span>AI-Powered Nutrition Engine</span>
+            </div>
+            <h1>Next-Gen <span class="gradient">Food Intelligence</span></h1>
+            <p>Harness the power of advanced computer vision and machine learning to decode your nutrition instantly. One photo. Complete analysis.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Launch App</a>
+                <a href="#" class="btn btn-ghost">View API Docs</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">99.2%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">&lt;200ms</div>
+                    <div class="stat-label">Latency</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15K+</div>
+                    <div class="stat-label">Food Items</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="ai-card">
+                <div class="ai-card-header">
+                    <div class="ai-status">
+                        <span class="indicator"></span>
+                        <span>AI ONLINE</span>
+                    </div>
+                    <span class="ai-card-title">Daily Overview</span>
+                </div>
+                <div class="data-viz">
+                    <div class="data-header">
+                        <div>
+                            <span class="data-value">1,847</span>
+                            <span class="data-unit">kcal</span>
+                        </div>
+                        <span class="data-change">+12% today</span>
+                    </div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-item">
+                        <span class="progress-label">PROTEIN</span>
+                        <div class="progress-track">
+                            <div class="progress-fill protein"></div>
+                        </div>
+                        <span class="progress-value">124g</span>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">CARBS</span>
+                        <div class="progress-track">
+                            <div class="progress-fill carbs"></div>
+                        </div>
+                        <span class="progress-value">186g</span>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">FAT</span>
+                        <div class="progress-track">
+                            <div class="progress-fill fat"></div>
+                        </div>
+                        <span class="progress-value">58g</span>
+                    </div>
+                </div>
+                <button class="ai-scan-btn">
+                    <span>SCAN FOOD</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Powered by AI</h2>
+                <p>State-of-the-art technology for nutrition tracking</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Neural Recognition</h3>
+                    <p>Deep learning models trained on millions of food images for precise identification and portion estimation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-time Processing</h3>
+                    <p>Sub-200ms response times powered by edge computing and optimized inference pipelines.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data Analytics</h3>
+                    <p>Comprehensive dashboards and insights with predictive modeling for your nutrition goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Section -->
+    <section class="terminal-section">
+        <div class="terminal-container">
+            <div class="section-header">
+                <h2>Developer Friendly</h2>
+                <p>Integrate with our powerful API</p>
+            </div>
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">curl -X POST https://api.cal.ai/v1/analyze</span>
+                    </div>
+                    <div class="terminal-output">Analyzing image...</div>
+                    <div class="terminal-output terminal-json">
+{<br>
+&nbsp;&nbsp;"food": "Grilled Salmon Bowl",<br>
+&nbsp;&nbsp;"calories": 485,<br>
+&nbsp;&nbsp;"protein": 42,<br>
+&nbsp;&nbsp;"carbs": 38,<br>
+&nbsp;&nbsp;"fat": 18,<br>
+&nbsp;&nbsp;"confidence": 0.97<br>
+}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Ready to Level Up?</h2>
+            <p>Join the future of nutrition tracking with cutting-edge AI technology.</p>
+            <a href="#" class="btn btn-primary">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 CAL.AI // Built with advanced AI</p>
+    </footer>
+</body>
+</html>

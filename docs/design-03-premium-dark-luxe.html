@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal AI - Design Style 3: Premium Dark Luxe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #C9A962;
+            --primary-light: #E5D4A1;
+            --secondary: #8B7355;
+            --accent: #9D7CD8;
+            --bg: #0A0A0A;
+            --bg-elevated: #141414;
+            --surface: #1A1A1A;
+            --surface-light: #252525;
+            --text: #FAFAFA;
+            --text-secondary: #8A8A8A;
+            --border: #2A2A2A;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(30px);
+            padding: 1.5rem 3rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.8125rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.4s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 2px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 40px rgba(201, 169, 98, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 2rem;
+            height: 1px;
+            background: var(--primary);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            width: 380px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .glass-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .glass-card-header h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6875rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .glass-card-header span {
+            font-size: 0.75rem;
+            color: var(--primary);
+        }
+
+        .calorie-display {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .calorie-display .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .calorie-display .unit {
+            font-size: 0.6875rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar-container {
+            margin-bottom: 2.5rem;
+        }
+
+        .progress-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.6875rem;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--surface-light);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 68%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .macro-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .macro-item {
+            text-align: center;
+        }
+
+        .macro-item .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .macro-item .label {
+            font-size: 0.625rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 10rem 3rem;
+            background: var(--bg-elevated);
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 0.6875rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            font-weight: 400;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: all 0.5s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 60px rgba(201, 169, 98, 0.1);
+        }
+
+        .feature-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 10rem 3rem;
+            text-align: center;
+        }
+
+        .testimonial-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .testimonial cite {
+            font-style: normal;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 10rem 3rem;
+            background: var(--bg-elevated);
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-container::before,
+        .cta-container::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-container::after {
+            top: auto;
+            bottom: 0;
+        }
+
+        .cta h2 {
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 3rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        /* Style Info Box */
+        .style-info {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 1.5rem;
+            max-width: 320px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .style-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8125rem;
+            letter-spacing: 1px;
+        }
+
+        .style-info ul {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            padding-left: 1.25rem;
+        }
+
+        .style-info ul li {
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Style Info -->
+    <div class="style-info">
+        <h4>Style 3: Premium Dark Luxe</h4>
+        <ul>
+            <li><strong>Tone:</strong> 고급스러움, 세련됨, 프리미엄</li>
+            <li><strong>Color:</strong> 다크 베이스 + 골드/퍼플 악센트</li>
+            <li><strong>Feel:</strong> 글래스모피즘, 우아한 타이포그래피</li>
+            <li><strong>Target:</strong> 프리미엄 서비스 선호 고객층</li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">CAL AI</div>
+            <ul class="nav-links">
+                <li><a href="#">Experience</a></li>
+                <li><a href="#">Membership</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <div>
+                <a href="#" class="btn btn-outline">Sign In</a>
+                <a href="#" class="btn btn-primary">Join Now</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">AI-Powered Wellness</span>
+            <h1>The Art of <em>Mindful</em> Nutrition</h1>
+            <p>Experience the future of nutrition tracking. Our sophisticated AI analyzes your meals with precision, delivering insights that elevate your wellness journey.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Begin Your Journey</a>
+                <a href="#" class="btn btn-outline">Explore</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="glass-card">
+                <div class="glass-card-header">
+                    <h4>Daily Summary</h4>
+                    <span>Today</span>
+                </div>
+                <div class="calorie-display">
+                    <div class="number">1,368</div>
+                    <div class="unit">Calories Consumed</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-label">
+                        <span>Progress</span>
+                        <span>68%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-bar-fill"></div>
+                    </div>
+                </div>
+                <div class="macro-grid">
+                    <div class="macro-item">
+                        <div class="value">92g</div>
+                        <div class="label">Protein</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="value">145g</div>
+                        <div class="label">Carbs</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="value">48g</div>
+                        <div class="label">Fat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <span class="section-tag">The Experience</span>
+                <h2>Refined Precision</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">01</div>
+                    <h3>Intelligent Recognition</h3>
+                    <p>Our advanced AI instantly identifies ingredients and portions with remarkable accuracy, learning your preferences over time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">02</div>
+                    <h3>Curated Insights</h3>
+                    <p>Receive personalized recommendations and detailed nutritional analysis tailored to your unique wellness goals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-number">03</div>
+                    <h3>Seamless Tracking</h3>
+                    <p>Effortlessly monitor your daily intake with an interface designed for clarity and elegance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="testimonial-container">
+            <blockquote>"Cal AI has transformed how I approach nutrition. The elegance and precision of the experience is unmatched."</blockquote>
+            <cite>Alexandra Chen, Wellness Consultant</cite>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Elevate Your Wellness</h2>
+            <p>Join a community of discerning individuals who value precision and elegance in their health journey.</p>
+            <a href="#" class="btn btn-primary">Request Access</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cal AI. All rights reserved.</p>
+    </footer>
+</body>
+</html>
