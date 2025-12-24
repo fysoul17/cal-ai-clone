@@ -1,23 +1,28 @@
 "use client";
 
-import { StepIndicator } from "./StepIndicator";
 import { useScrollAnimation } from "@/app/hooks/useScrollAnimation";
 
-const steps: Array<{ stepNumber: 1 | 2 | 3; title: string; description: string }> = [
+const steps = [
   {
-    stepNumber: 1,
-    title: "사진 촬영",
-    description: "음식 사진을 찍거나 갤러리에서 선택하세요.",
+    number: "01",
+    icon: "📷",
+    title: "Snap a Photo",
+    description:
+      "Take a quick photo of your meal using your phone camera or upload an existing image from your gallery.",
   },
   {
-    stepNumber: 2,
-    title: "AI 분석",
-    description: "AI가 음식을 인식하고 영양 정보를 분석합니다.",
+    number: "02",
+    icon: "🤖",
+    title: "AI Analysis",
+    description:
+      "Our advanced AI instantly analyzes your food, identifying ingredients and calculating accurate nutritional values.",
   },
   {
-    stepNumber: 3,
-    title: "결과 저장",
-    description: "분석 결과를 확인하고 일일 기록에 저장하세요.",
+    number: "03",
+    icon: "✅",
+    title: "Review & Save",
+    description:
+      "Confirm the analysis, make any adjustments if needed, and save to your daily log. That's it!",
   },
 ];
 
@@ -28,54 +33,106 @@ export function HowItWorksSection() {
     <section
       ref={ref}
       id="how-it-works"
-      className="py-20 px-4 sm:px-6 lg:px-8"
+      className="py-24 px-8 bg-[var(--color-bg-darker)] relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2
-            className={`text-3xl sm:text-4xl font-bold text-white mb-4 ${
+      {/* Background Decorations */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent opacity-20" />
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-20" />
+
+      <div className="max-w-[1200px] mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-20">
+          <div
+            className={`inline-block badge mb-6 ${
               isVisible
                 ? "motion-safe:animate-fadeInUp motion-reduce:opacity-100"
                 : "opacity-0"
             }`}
           >
-            이용 방법
-          </h2>
-          <p
-            className={`text-slate-300 text-lg max-w-2xl mx-auto ${
+            <span>HOW IT WORKS</span>
+          </div>
+          <h2
+            className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 ${
               isVisible
                 ? "motion-safe:animate-fadeInUp motion-reduce:opacity-100"
                 : "opacity-0"
             }`}
             style={{ animationDelay: "100ms" }}
           >
-            3단계로 간편하게 시작하세요
+            Track Nutrition in{" "}
+            <span className="text-gradient">3 Simple Steps</span>
+          </h2>
+          <p
+            className={`text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto ${
+              isVisible
+                ? "motion-safe:animate-fadeInUp motion-reduce:opacity-100"
+                : "opacity-0"
+            }`}
+            style={{ animationDelay: "200ms" }}
+          >
+            No more manual entry or guesswork. Just snap, analyze, and conquer
+            your nutrition goals.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-          {steps.map((step, index) => (
-            <div
-              key={step.stepNumber}
-              className={
-                isVisible
-                  ? "motion-safe:animate-fadeInUp motion-reduce:opacity-100"
-                  : "opacity-0"
-              }
-              style={{ animationDelay: `${200 + index * 150}ms` }}
-            >
-              <StepIndicator
-                stepNumber={step.stepNumber}
-                title={step.title}
-                description={step.description}
-              />
-            </div>
-          ))}
-        </div>
+        {/* Steps */}
+        <div className="relative">
+          {/* Connection Line */}
+          <div className="hidden lg:block absolute top-1/2 left-[15%] right-[15%] h-0.5 bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)] transform -translate-y-1/2 opacity-30" />
 
-        {/* Connection lines for desktop */}
-        <div className="hidden md:block relative -mt-40 mb-20">
-          <div className="absolute top-1/2 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-orange-500/50 via-amber-500/50 to-orange-500/50 -z-10" />
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                className={`relative ${
+                  isVisible
+                    ? "motion-safe:animate-fadeInUp motion-reduce:opacity-100"
+                    : "opacity-0"
+                }`}
+                style={{ animationDelay: `${300 + index * 150}ms` }}
+              >
+                {/* Step Card */}
+                <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[var(--radius-2xl)] p-8 text-center relative z-10 hover:border-[var(--color-border-primary)] transition-colors duration-300">
+                  {/* Step Number */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-gradient-primary rounded-full text-white text-sm font-bold">
+                    {step.number}
+                  </div>
+
+                  {/* Icon */}
+                  <div className="text-6xl mb-6 mt-4">{step.icon}</div>
+
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Arrow (between cards on desktop) */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:flex absolute top-1/2 -right-6 transform -translate-y-1/2 z-20">
+                    <div className="w-12 h-12 rounded-full bg-[var(--color-bg-dark)] border border-[var(--color-border)] flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-[var(--color-primary)]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal AI - Design Style 4: Organic Natural Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5C8D4D;
+            --primary-light: #7BAF6B;
+            --secondary: #B8860B;
+            --accent: #D4A574;
+            --bg: #FAF8F5;
+            --bg-warm: #F5F1EB;
+            --surface: #FFFFFF;
+            --text: #2D3A2D;
+            --text-secondary: #6B7B6B;
+            --border: #E8E2D9;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* Organic Pattern Background */
+        .organic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+            background-image:
+                radial-gradient(circle at 15% 15%, rgba(92, 141, 77, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(212, 165, 116, 0.1) 0%, transparent 40%);
+        }
+
+        /* Header */
+        header {
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1.25rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            box-shadow: 0 8px 24px rgba(92, 141, 77, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--primary);
+            position: relative;
+        }
+
+        .hero-content h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(92, 141, 77, 0.2);
+            z-index: -1;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        /* Nature Card */
+        .nature-card {
+            background: var(--surface);
+            border-radius: 32px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(45, 58, 45, 0.08);
+            border: 1px solid var(--border);
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-header h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--text);
+        }
+
+        .card-header .date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .calorie-circle {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .calorie-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .calorie-circle circle {
+            fill: none;
+            stroke-width: 12;
+            stroke-linecap: round;
+        }
+
+        .calorie-circle .bg {
+            stroke: var(--bg-warm);
+        }
+
+        .calorie-circle .progress {
+            stroke: var(--primary);
+            stroke-dasharray: 502;
+            stroke-dashoffset: 150;
+        }
+
+        .calorie-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .calorie-center .value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text);
+            line-height: 1;
+        }
+
+        .calorie-center .label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .macro-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .macro-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .macro-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-warm);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .macro-info {
+            flex: 1;
+        }
+
+        .macro-info .name {
+            font-weight: 500;
+            color: var(--text);
+            font-size: 0.9375rem;
+        }
+
+        .macro-bar {
+            height: 6px;
+            background: var(--bg-warm);
+            border-radius: 3px;
+            margin-top: 0.375rem;
+            overflow: hidden;
+        }
+
+        .macro-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .macro-bar-fill.protein {
+            width: 75%;
+            background: var(--primary);
+        }
+
+        .macro-bar-fill.carbs {
+            width: 60%;
+            background: var(--secondary);
+        }
+
+        .macro-bar-fill.fat {
+            width: 45%;
+            background: var(--accent);
+        }
+
+        .macro-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--bg-warm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header span {
+            display: inline-block;
+            background: rgba(92, 141, 77, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.75rem;
+            color: var(--text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(45, 58, 45, 0.1);
+        }
+
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, rgba(92, 141, 77, 0.1), rgba(212, 165, 116, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.375rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .benefits h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefits p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-list {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .benefit-check {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .benefit-item span {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: var(--bg-warm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--surface);
+            border-radius: 32px;
+            padding: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Style Info Box */
+        .style-info {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            max-width: 320px;
+            box-shadow: 0 10px 40px rgba(45, 58, 45, 0.15);
+            z-index: 1000;
+        }
+
+        .style-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .style-info ul {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 1.25rem;
+        }
+
+        .style-info ul li {
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="organic-bg"></div>
+
+    <!-- Style Info -->
+    <div class="style-info">
+        <h4>Style 4: Organic Natural Wellness</h4>
+        <ul>
+            <li><strong>Tone:</strong> 자연스러움, 건강함, 친근함</li>
+            <li><strong>Color:</strong> 크림 베이스 + 그린/어스톤</li>
+            <li><strong>Feel:</strong> 부드러운 곡선, 따뜻한 느낌</li>
+            <li><strong>Target:</strong> 웰니스 라이프스타일 추구자</li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">🌿</div>
+                <span class="logo-text">Cal AI</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">How it Works</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+            <div>
+                <a href="#" class="btn btn-outline">Log in</a>
+                <a href="#" class="btn btn-primary">Start Free</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Nourish Your Body <span class="highlight">Naturally</span></h1>
+            <p>Discover the joy of mindful eating with AI that understands your food. Simply photograph your meals and let nature guide your nutrition journey.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Get Started Free</a>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="nature-card">
+                <div class="card-header">
+                    <h4>Today's Nutrition</h4>
+                    <span class="date">Dec 24</span>
+                </div>
+                <div class="calorie-circle">
+                    <svg width="180" height="180">
+                        <circle class="bg" cx="90" cy="90" r="80"/>
+                        <circle class="progress" cx="90" cy="90" r="80"/>
+                    </svg>
+                    <div class="calorie-center">
+                        <div class="value">1,520</div>
+                        <div class="label">of 2,000 kcal</div>
+                    </div>
+                </div>
+                <div class="macro-list">
+                    <div class="macro-row">
+                        <div class="macro-icon">🥬</div>
+                        <div class="macro-info">
+                            <div class="name">Protein</div>
+                            <div class="macro-bar">
+                                <div class="macro-bar-fill protein"></div>
+                            </div>
+                        </div>
+                        <div class="macro-value">82g</div>
+                    </div>
+                    <div class="macro-row">
+                        <div class="macro-icon">🌾</div>
+                        <div class="macro-info">
+                            <div class="name">Carbohydrates</div>
+                            <div class="macro-bar">
+                                <div class="macro-bar-fill carbs"></div>
+                            </div>
+                        </div>
+                        <div class="macro-value">156g</div>
+                    </div>
+                    <div class="macro-row">
+                        <div class="macro-icon">🥑</div>
+                        <div class="macro-info">
+                            <div class="name">Healthy Fats</div>
+                            <div class="macro-bar">
+                                <div class="macro-bar-fill fat"></div>
+                            </div>
+                        </div>
+                        <div class="macro-value">52g</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <span>How It Works</span>
+                <h2>Simple, Natural, Effective</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📷</div>
+                    <h3>Capture Your Meal</h3>
+                    <p>Take a quick photo of your food. Our AI recognizes ingredients from farm-fresh produce to homemade dishes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Smart Analysis</h3>
+                    <p>Get instant nutritional insights. Understand what nourishes your body with detailed macro breakdowns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Grow Healthy Habits</h3>
+                    <p>Track your progress over time. Build sustainable eating habits that support your wellbeing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="benefits-container">
+            <h2>Wholesome Features</h2>
+            <p>Everything you need for a balanced approach to nutrition tracking</p>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span>No calorie obsessing</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span>Whole food focus</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span>Gentle reminders</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-check">✓</div>
+                    <span>Recipe suggestions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Start Your Wellness Journey</h2>
+            <p>Join thousands who have discovered a healthier relationship with food.</p>
+            <a href="#" class="btn btn-primary">Begin Today - It's Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cal AI. Nourishing lives, naturally.</p>
+    </footer>
+</body>
+</html>

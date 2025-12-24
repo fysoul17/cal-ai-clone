@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Cal AI - 사진 한 장으로 칼로리 추적",
-  description: "AI 기반 음식 인식으로 칼로리와 영양소를 자동으로 계산합니다. 사진 한 장으로 건강한 식단 관리를 시작하세요.",
+  title: "Cal AI - Smart Nutrition Tracking",
+  description: "AI-powered food recognition for effortless calorie counting. Snap a photo and let AI do the rest. Track your macros in seconds.",
 };
 
 export default function RootLayout({
@@ -23,9 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className="dark">
+    <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-white`}
+        className={`${outfit.variable} ${jetbrainsMono.variable} antialiased`}
+        style={{ fontFamily: "var(--font-outfit), sans-serif" }}
       >
         {children}
       </body>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cal AI - Design Style 1: Minimalist Health Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0EA5E9;
+            --primary-light: #38BDF8;
+            --secondary: #10B981;
+            --bg: #FAFAFA;
+            --surface: #FFFFFF;
+            --text: #1E293B;
+            --text-secondary: #64748B;
+            --border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 280px;
+            height: 560px;
+            background: var(--surface);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border: 8px solid #1E293B;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .phone-screen {
+            padding: 1.5rem;
+            height: 100%;
+        }
+
+        .phone-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .phone-header h3 {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .phone-header h2 {
+            font-size: 2rem;
+            color: var(--text);
+        }
+
+        .calorie-ring {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 0deg 252deg, var(--border) 252deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .calorie-ring-inner {
+            width: 130px;
+            height: 130px;
+            background: var(--surface);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calorie-ring-inner span:first-child {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .calorie-ring-inner span:last-child {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .macro-bars {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .macro-bar {
+            flex: 1;
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .macro-bar span {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .macro-bar strong {
+            font-size: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.2);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Style Info Box */
+        .style-info {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 300px;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .style-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .style-info ul {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            padding-left: 1.25rem;
+        }
+
+        .style-info ul li {
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Style Info -->
+    <div class="style-info">
+        <h4>Style 1: Minimalist Health Tech</h4>
+        <ul>
+            <li><strong>Tone:</strong> 깔끔, 신뢰감, 전문적</li>
+            <li><strong>Color:</strong> 화이트 베이스 + 스카이블루/에메랄드</li>
+            <li><strong>Feel:</strong> 여백 활용, 심플한 아이콘, 가벼운 느낌</li>
+            <li><strong>Target:</strong> 건강 관리에 진지한 성인</li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Cal AI</div>
+            <ul class="nav-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <div>
+                <a href="#" class="btn btn-outline">Log in</a>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Track Calories <span>Effortlessly</span> with AI</h1>
+            <p>Simply snap a photo of your meal. Our AI instantly analyzes nutritional content, helping you make informed dietary choices without manual logging.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Start Free Trial</a>
+                <a href="#" class="btn btn-outline">Watch Demo</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="phone-header">
+                        <h3>Today</h3>
+                        <h2>1,400 kcal</h2>
+                    </div>
+                    <div class="calorie-ring">
+                        <div class="calorie-ring-inner">
+                            <span>70%</span>
+                            <span>of 2,000</span>
+                        </div>
+                    </div>
+                    <div class="macro-bars">
+                        <div class="macro-bar">
+                            <span>Protein</span>
+                            <strong>85g</strong>
+                        </div>
+                        <div class="macro-bar">
+                            <span>Carbs</span>
+                            <strong>120g</strong>
+                        </div>
+                        <div class="macro-bar">
+                            <span>Fat</span>
+                            <strong>45g</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Why Choose Cal AI?</h2>
+                <p>The smartest way to track your nutrition</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Instant Photo Analysis</h3>
+                    <p>Take a photo and get nutritional data in seconds. No more searching databases manually.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Accurate Estimates</h3>
+                    <p>AI-powered recognition provides reliable calorie and macro calculations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Daily Insights</h3>
+                    <p>Track your progress with beautiful charts and personalized recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2>Start Your Health Journey Today</h2>
+            <p>Join thousands of users who have simplified their nutrition tracking with Cal AI.</p>
+            <a href="#" class="btn btn-primary">Get Started for Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cal AI. All rights reserved.</p>
+    </footer>
+</body>
+</html>

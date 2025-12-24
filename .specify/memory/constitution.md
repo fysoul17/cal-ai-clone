@@ -1,10 +1,10 @@
 <!--
 Sync Impact Report
 ==================
-Version change: 1.0.0 → 1.1.0
+Version change: 1.1.0 → 1.2.0
 Modified principles: None
 Added sections:
-  - AI Vision Model row in Technology Stack table
+  - Principle VI: Design System Compliance (UI/UX work must reference docs/design-system.md)
 Removed sections: None
 Templates requiring updates:
   - .specify/templates/plan-template.md ✅ no changes needed (generic)
@@ -49,6 +49,18 @@ Follow established conventions from official documentation:
 Each feature MUST be independently deployable and testable.
 MVP first: implement the critical path before edge cases.
 User-facing value with each commit - avoid large "work in progress" branches.
+
+### VI. Design System Compliance
+All UI/UX work MUST reference `docs/design-system.md` before implementation.
+Visual components MUST adhere to documented:
+  - Color system (primary, secondary, semantic, gradients)
+  - Typography (font families, type scale, text styles)
+  - Spacing system (4px base unit scale)
+  - Border radius and shadows
+  - Component patterns (buttons, cards, inputs, badges)
+  - Motion and animation guidelines
+  - Responsive breakpoints
+Deviations from the design system require explicit justification and approval.
 
 ## Technology Stack
 
@@ -99,4 +111,4 @@ This constitution supersedes personal preferences and external "best practices" 
 - Reviewers MUST verify no over-engineering or speculative code
 - Dead code MUST be removed before merge
 
-**Version**: 1.1.0 | **Ratified**: 2025-12-22 | **Last Amended**: 2025-12-22
+**Version**: 1.2.0 | **Ratified**: 2025-12-22 | **Last Amended**: 2025-12-24
