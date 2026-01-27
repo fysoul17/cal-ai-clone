@@ -197,7 +197,7 @@ export async function analyzeFood(
       formData.append('image', image, 'food.jpg');
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
+      const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
 
       try {
         const response = await fetch(webhookUrl, {
