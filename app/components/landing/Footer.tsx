@@ -54,7 +54,7 @@ export function Footer({ showCTA = true }: FooterProps) {
               tracking can be with AI-powered analysis.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
-              <Link href="/signup" className="btn-primary text-base py-4 px-10">
+              <Link href="/sign-up" className="btn-primary text-base py-4 px-10">
                 START FREE TRIAL
                 <svg
                   className="w-5 h-5"

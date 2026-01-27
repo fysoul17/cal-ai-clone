@@ -46,13 +46,13 @@ export function Header({ showCTA = true }: HeaderProps) {
             {showCTA && (
               <>
                 <Link
-                  href="/login"
+                  href="/sign-in"
                   className="hidden sm:inline-flex text-[var(--color-text-secondary)] font-semibold hover:text-white transition-colors duration-300"
                 >
                   Login
                 </Link>
                 <Link
-                  href="/signup"
+                  href="/sign-up"
                   className="btn-primary text-sm py-2 px-6"
                 >
                   Start Free
@@ -96,7 +96,7 @@ export function Header({ showCTA = true }: HeaderProps) {
               ))}
               <li className="pt-4 border-t border-[var(--color-border)]">
                 <Link
-                  href="/login"
+                  href="/sign-in"
                   className="block text-[var(--color-text-secondary)] font-semibold hover:text-white transition-colors duration-300 mb-4"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

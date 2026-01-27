@@ -20,7 +20,7 @@ export function HeroSection({
   headline = "SNAP. ANALYZE. CONQUER.",
   subtext = "The smartest way to track your nutrition. Take a photo of your meal and let AI do the rest. Accurate macros in seconds.",
   ctaLabel = "START FREE TRIAL",
-  ctaHref = "/signup",
+  ctaHref = "/sign-up",
 }: HeroSectionProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-20 px-8 overflow-hidden">
