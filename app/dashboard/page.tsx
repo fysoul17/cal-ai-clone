@@ -19,6 +19,7 @@ import MealTimeline from '@/app/components/dashboard/MealTimeline';
 import AddFoodForm from '@/app/components/dashboard/AddFoodForm';
 import ImageUpload from '@/app/components/dashboard/ImageUpload';
 import AnalysisStatus from '@/app/components/dashboard/AnalysisStatus';
+import DashboardHeader from '@/app/components/dashboard/DashboardHeader';
 
 // T033: Form mode type
 type FormMode = 'image-upload' | 'manual-entry' | 'analyzing' | 'results';
@@ -189,17 +190,7 @@ export default function DashboardPage() {
       </div>
 
       <main className="relative z-10 max-w-2xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <header className="mb-8">
-          <h1 className="text-3xl font-black text-white">Dashboard</h1>
-          <p className="text-[#A0A0B8] mt-1">
-            {new Date().toLocaleDateString('en-US', {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </p>
-        </header>
+        <DashboardHeader />
 
         <section className="mb-8">
           <CalorieProgress consumed={consumed} target={DAILY_CALORIE_TARGET} />
