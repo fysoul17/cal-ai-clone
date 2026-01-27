@@ -1,6 +1,6 @@
 'use client';
 
-import { MealEntry as MealEntryType } from '@/app/types/meal';
+import { MealEntry as MealEntryType, formatMacro } from '@/app/types/meal';
 
 interface MealEntryProps {
   meal: MealEntryType;
@@ -37,12 +37,18 @@ const mealTypeColors: Record<string, { bg: string; text: string; border: string 
   },
 };
 
+// T026 & T030: Check if meal has any macros
+function hasMacros(meal: MealEntryType): boolean {
+  return meal.protein !== undefined || meal.carbs !== undefined || meal.fat !== undefined;
+}
+
 export default function MealEntry({ meal }: MealEntryProps) {
   const colors = meal.mealType ? mealTypeColors[meal.mealType] : null;
+  const showMacros = hasMacros(meal);
 
   return (
-    <div className="flex items-center gap-4 p-4 rounded-2xl bg-gradient-to-br from-[#252541] to-[#0F0F1A] border border-white/5 hover:border-[#FF6B35]/30 transition-all duration-300">
-      <div className="flex-shrink-0 w-16 text-center">
+    <div className="flex items-start gap-4 p-4 rounded-2xl bg-gradient-to-br from-[#252541] to-[#0F0F1A] border border-white/5 hover:border-[#FF6B35]/30 transition-all duration-300">
+      <div className="flex-shrink-0 w-16 text-center pt-1">
         <span className="text-sm font-semibold text-[#A0A0B8]">
           {formatTime(meal.timestamp)}
         </span>
@@ -50,12 +56,39 @@ export default function MealEntry({ meal }: MealEntryProps) {
 
       <div className="flex-1 min-w-0">
         <h3 className="text-white font-semibold truncate">{meal.name}</h3>
+
+        {/* Meal type badge */}
         {colors && meal.mealType && (
           <span
             className={`inline-flex items-center px-2 py-0.5 mt-1 text-xs font-semibold rounded-full border ${colors.bg} ${colors.text} ${colors.border}`}
           >
             {meal.mealType}
           </span>
+        )}
+
+        {/* T026: Macro pills when present */}
+        {showMacros && (
+          <div className="flex gap-2 mt-2 flex-wrap">
+            {meal.protein !== undefined && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-lg bg-[#FF6B35]/20 text-[#FF6B35] border border-[#FF6B35]/30">
+                <span>🥩</span>
+                {/* T030: Format macro display values */}
+                <span>{formatMacro(meal.protein)}</span>
+              </span>
+            )}
+            {meal.carbs !== undefined && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-lg bg-[#F7C94B]/20 text-[#F7C94B] border border-[#F7C94B]/30">
+                <span>🍚</span>
+                <span>{formatMacro(meal.carbs)}</span>
+              </span>
+            )}
+            {meal.fat !== undefined && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded-lg bg-[#FF3366]/20 text-[#FF3366] border border-[#FF3366]/30">
+                <span>🥑</span>
+                <span>{formatMacro(meal.fat)}</span>
+              </span>
+            )}
+          </div>
         )}
       </div>
 
