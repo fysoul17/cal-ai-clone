@@ -1,4 +1,4 @@
-import { NutritionAnalysis } from '@/app/types/meal';
+import { NutritionAnalysis, MealType } from '@/app/types/meal';
 
 // T010: Supported image formats
 const SUPPORTED_FORMATS = [
@@ -171,17 +171,24 @@ async function withRetry<T>(
   throw lastError;
 }
 
+/** Options for food analysis */
+export interface AnalyzeFoodOptions {
+  image: Blob;
+  userId: string;
+  mealType?: MealType;
+  onRetry?: (attempt: number, error: Error) => void;
+}
+
 /**
  * Analyzes a food image using the AI webhook
- * @param image - The image blob to analyze
- * @param onRetry - Optional callback called when a retry attempt is made
+ * @param options - Analysis options including image, userId, and optional mealType
  * @returns Nutrition analysis results from the AI
  * @throws FoodAnalysisError on failure
  */
 export async function analyzeFood(
-  image: Blob,
-  onRetry?: (attempt: number, error: Error) => void
+  options: AnalyzeFoodOptions
 ): Promise<NutritionAnalysis> {
+  const { image, userId, mealType, onRetry } = options;
   const webhookUrl = process.env.NEXT_PUBLIC_WEBHOOK_URL;
 
   if (!webhookUrl) {
@@ -191,10 +198,21 @@ export async function analyzeFood(
     } as FoodAnalysisError;
   }
 
+  if (!userId) {
+    throw {
+      message: 'User not authenticated. Please log in.',
+      retryable: false,
+    } as FoodAnalysisError;
+  }
+
   return withRetry(
     async () => {
       const formData = new FormData();
       formData.append('image', image, 'food.jpg');
+      formData.append('user_id', userId);
+      if (mealType) {
+        formData.append('meal_type', mealType);
+      }
 
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s timeout
