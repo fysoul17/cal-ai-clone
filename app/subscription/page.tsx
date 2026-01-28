@@ -17,16 +17,20 @@ export default function SubscriptionPage() {
         throw new Error('Client Key is not set');
       }
 
-      const tossPayments = await loadTossPayments(clientKey);
-
       // Customer Key must be unique for each user (or consistent for the same user)
       // Ideally, pass the real user ID or a consistent hash.
       // For this demo, we generate a random one, effectively treating every session as a new "card registration".
       // In production, use: `user.id` or similar.
       const customerKey = uuidv4();
 
-      await tossPayments.requestBillingAuth('CARD', {
-        customerKey,
+      const tossPayments = await loadTossPayments(clientKey);
+
+      // v2 SDK: payment 인스턴스 생성 필요
+      const payment = tossPayments.payment({ customerKey });
+
+      // v2 SDK: payment 인스턴스의 requestBillingAuth 호출
+      await payment.requestBillingAuth({
+        method: 'CARD',
         successUrl: window.location.origin + '/api/billing/confirm',
         failUrl: window.location.origin + '/subscription/fail',
       });
